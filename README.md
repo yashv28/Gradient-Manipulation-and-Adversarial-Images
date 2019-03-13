@@ -2,9 +2,10 @@
 
 In this project I continue to explore the mathematical tools on which deep learning is based, while also moving towards real world network architectures. Simple CNNs are trained on the CIFAR-10 and MNIST datasets, and gradient approximation techniques are experimented, that use gradients to create adversarial images.
 
-## Data Pre-processing and Augmentation
+Data Pre-processing and Augmentation
+-------------------------------------
 
-**Network**
+### Network
 
 | Layers | Hyper-parameters |
 | ------ | ------ |
@@ -17,16 +18,17 @@ Pooling 3 | Average operation. Kernel size = (2, 2). Stride = 2. Padding = 0
 Fully Connected | Output channels = 64. Followed by BatchNorm and ReLU
 Fully Connected | Output channels = 10. Followed by Softmax
 
-**Training CIFAR-10 with 10000 and steps of an epoch to 100 (withbatch size 100)**
+### Training CIFAR-10 with 10000 and steps of an epoch to 100 (withbatch size 100)
 
 | Raw images | Normalized (μ=0, σ=1) | Previous + Random flip(50%) | Previous + Zero-padded(4) and random cropped(32x32) |
 | ------ | ------ | ------ | ------ |
 <img src="./preprocessing/graphs/raw_e.png" alt="drawing" width="220"/> | <img src="./preprocessing/graphs/norm_e.png" alt="drawing" width="220"/>  | <img src="./preprocessing/graphs/flip_e.png" alt="drawing" width="220"/>  | <img src="./preprocessing/graphs/pad_n_crop_e.png" alt="drawing" width="220"/> 
 Test Accuracy: 0.7053000038862228 | Test Accuracy: 0.7191000002622604 | Test Accuracy: 0.7513000022172928 | Test Accuracy: 0.7681999999284744
 
-## Binary networks
+Binary networks
+----------------
 
-**Network**
+### Network
 
 | Layers | Hyper-parameters |
 | ------ | ------ |
@@ -38,7 +40,7 @@ Convolution 5 | Kernel size = (3, 3, 128), Stride=2, Padding=1, ReLU activation
 Fully Connected | Output channels = 100. ReLU activation
 Fully Connected | Output channels = 10. Softmax activation
 
-**Training MNIST with 10000 and steps of an epoch to 100 (withbatch size 100)**
+### Training MNIST with 10000 and steps of an epoch to 100 (withbatch size 100)
 
 | ReLU activation | Sign activation with custom gradient |
 | ------ | ------ |
@@ -46,30 +48,32 @@ Fully Connected | Output channels = 10. Softmax activation
 <img src="./binary networks/graphs/test_relu.png" alt="drawing" width="500"/>  | <img src="./binary networks/graphs/test_sign.png" alt="drawing" width="500"/> 
 Test Accuracy:  0.9866000068187714 | Test Accuracy: 0.9819000059366226
 
-## Adversarial Images
+Adversarial Images
+-------------------
 
-**Adding perturbations and fooling the network to misclassify**
+### Adding perturbations and fooling the network to misclassify
 
 | Original prediction | Perturbed prediction |
 | ------ | ------ |
 <img src="./adversarial images/images/144.png" alt="drawing" width="500"/><br> 4 | <img src="./adversarial images/images/148.png" alt="drawing" width="500"/><br> 8
 <img src="./adversarial images/images/199.png" alt="drawing" width="500"/><br> 9 | <img src="./adversarial images/images/194.png" alt="drawing" width="500"/><br> 4 
 
-**Adding perturbations and forcing the network to believe that the image has a particular label**
+### Adding perturbations and forcing the network to believe that the image has a particular label
 
 | Original prediction | Perturbed prediction |
 | ------ | ------ |
 <img src="./adversarial images/images/200.png" alt="drawing" width="500"/><br> 0 | <img src="./adversarial images/images/205.png" alt="drawing" width="500"/><br> 5
 <img src="./adversarial images/images/244.png" alt="drawing" width="500"/><br> 4 | <img src="./adversarial images/images/247.png" alt="drawing" width="500"/><br> 7 
 
-**Adding perturbations and forcing the network to misclassify using Sign activation**
+### Adding perturbations and forcing the network to misclassify using Sign activation
 
 | Original prediction | Perturbed prediction |
 | ------ | ------ |
 <img src="./adversarial images/images/311.png" alt="drawing" width="500"/><br> 1 | <img src="./adversarial images/images/314.png" alt="drawing" width="500"/><br> 4
 <img src="./adversarial images/images/322.png" alt="drawing" width="500"/><br> 2 | <img src="./adversarial images/images/328.png" alt="drawing" width="500"/><br> 8
 
-## References
+References
+-----------
 
 * Dr. Jianbo Shi's CIS 680 Lecture Slides
 * [CIFAR-10](https://www.cs.toronto.edu/~kriz/cifar.html)
